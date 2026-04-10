@@ -1,0 +1,16 @@
+# Code::Blocks IDE files
+*.cbp
+*.layout
+*.workspace
+
+# Build outputs
+bin/
+obj/
+*.exe
+*.o
+*.dll
+
+# OS temp files
+*.swp
+Thumbs.db
+.DS_Store
