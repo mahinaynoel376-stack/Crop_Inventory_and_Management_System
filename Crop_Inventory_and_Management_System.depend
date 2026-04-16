@@ -1,0 +1,31 @@
+# depslib dependency file v1.0
+1776320742 source:d:\c files\crop_inventory_and_management_system\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1776326367 source:d:\c files\crop_inventory_and_management_system\mainy.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<errno.h>
+
+1776348327 source:d:\c files\crop_inventory_and_management_system\menu_displays.c
+	<stdio.h>
+	"menu.h"
+
+1776347804 d:\c files\crop_inventory_and_management_system\menu.h
+
+1776355016 source:d:\c files\crop_inventory_and_management_system\real_main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"menu.h"
+	"LandingPageProcesses.h"
+
+1776355407 source:d:\c files\crop_inventory_and_management_system\landingpageprocesses.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1776351175 d:\c files\crop_inventory_and_management_system\landingpageprocesses.h
+
