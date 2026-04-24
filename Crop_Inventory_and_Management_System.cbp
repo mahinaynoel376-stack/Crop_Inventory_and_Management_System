@@ -42,6 +42,10 @@
 		<Unit filename="Real_Main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="ViewInventoryProcesses.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ViewInventoryProcesses.h" />
 		<Unit filename="menu.h" />
 		<Extensions />
 	</Project>

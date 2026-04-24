@@ -28,8 +28,25 @@ int main(){
 
                 if (outcome == 1){
                     printf("\nLogged In Successfully!\n\n");
-
-
+                    systemWelcome();
+                    int mainMenuChoice = mainMenu();
+                    switch(mainMenuChoice){
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        printf("\nYou have been Signed Out\n\n");
+                        break;
+                    case 5:
+                        printf("\nThank You For Using The System\n");
+                        lswitch = 0;
+                        break;
+                    default:
+                        printf("\nError: Invalid Input.\n\n");
+                    }
                     loginfailed = 0;
                 }
                 else{

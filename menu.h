@@ -3,5 +3,7 @@
 
 void systemUpperBar();
 int landingPageMenu();
+void systemWelcome();
+int mainMenu();
 
 #endif // MENU_INCLUDED
