@@ -4,59 +4,58 @@
 #include "menu.h"
 #include "LandingPageProcesses.h"
 
-struct User{
-    char username[50];
-    char password[50];
-};
 
 
 int main(){
     int lswitch = 1;
-    int loginfailed = 1;
     do{
-        struct User loginCredentials;
+        char loginUsername[50];
+        char loginPassword[50];
+
         systemUpperBar();
-        int landingPageMenuChoice = logInMenu();
+        int landingPageMenuChoice = landingPageMenu();
         clearBuffer();
         switch(landingPageMenuChoice){
         case 1:
             registration();
             break;
         case 2:
+            char fmenuback;
+            int loginfailed = 1;
             do{
-                printf("\nEnter Username: ");
-                fgets(loginCredentials.username, 50, stdin);
-                loginCredentials.username[strcspn(loginCredentials.username, "\n")] = 0;
-
-                printf("Enter Password: ");
-                fgets(loginCredentials.password, 50, stdin);
-                loginCredentials.password[strcspn(loginCredentials.password, "\n")] = 0;
-
-
-                int outcome = LoginCheck(loginCredentials.username, loginCredentials.password);
+                logInInputs(loginUsername,loginPassword);
+                int outcome = LoginCheck(loginUsername, loginPassword);
 
                 if (outcome == 1){
-                    printf("\nLogged In Successfully!\n");
+                    printf("\nLogged In Successfully!\n\n");
+
+
                     loginfailed = 0;
                 }
                 else{
-                    printf("\nIncorrect Username or Password, Try Again.");
+                    int properinput = 0;
+                    printf("\nIncorrect Username or Password, Try Again.\n");
+                    do{
+                        goBack(&fmenuback, &properinput);
+                    } while (properinput == 0);
+                    if (fmenuback == 'y' || fmenuback == 'Y'){
+                        printf("\n");
+                        break;
+                    }
                 }
             } while (loginfailed == 1);
             break;
         case 3:
-
+            printf("\nThank You For Using The System\n");
+            lswitch = 0;
             break;
         default:
-
-
+            printf("\nError: Invalid Input.\n\n");
         }
     }  while(lswitch == 1);
 
     return 0;
 }
-
-
 
 
 

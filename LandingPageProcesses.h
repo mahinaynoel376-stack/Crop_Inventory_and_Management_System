@@ -1,9 +1,10 @@
 #ifndef LANDINGPAGETHINGS
 #define LANDINGPAGETHINGS
 
-struct User;
 int LoginCheck();
 void registration();
 void clearBuffer();
+void logInInputs(char *loginUsername, char *loginPassword);
+void goBack(char *fmenuback, int *properinput);
 
 #endif // LANDINGPAGETHINGS

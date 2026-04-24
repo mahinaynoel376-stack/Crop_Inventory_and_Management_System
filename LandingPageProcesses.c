@@ -23,7 +23,6 @@ int LoginCheck(char *inputusename, char *inputpassword){
     while (fscanf(userDatabase, "%50[^,],%50s\n", Buffer.username, Buffer.password) == 2){
 
         if (strcmp(inputusename, Buffer.username) == 0 && strcmp(inputpassword,  Buffer.password) == 0){
-            printf("\nLog In Successful");
             match = 1;
             break;
         }
@@ -56,10 +55,33 @@ void registration(){
             FILE *Register = fopen("userDatabase.txt", "a+");
 
             fprintf(Register, "%s,%s\n", username, password);
-            printf("\nAccount Registered Successfully.\n ");
+            printf("\nAccount Registered Successfully.\n\n");
             fclose(Register);
             lswitch = 1;
         }
 
     } while (lswitch == 0);
 }
+
+void logInInputs(char *loginUsername, char *loginPassword){
+    printf("\nEnter Username: ");
+    fgets(loginUsername, 50, stdin);
+    loginUsername[strcspn(loginUsername, "\n")] = 0;
+
+    printf("Enter Password: ");
+    fgets(loginPassword, 50, stdin);
+    loginPassword[strcspn(loginPassword, "\n")] = 0;
+}
+
+void goBack(char *fmenuback, int *properinput){
+    printf("\nGo back? (y/n): ");
+    scanf(" %c", fmenuback);
+    clearBuffer();
+    if (*fmenuback == 'y' || *fmenuback == 'Y' || *fmenuback == 'n' || *fmenuback == 'N'){
+        *properinput = 1;
+    }
+    else{
+        printf("\nError: Invalid Input.\n");
+    }
+}
+

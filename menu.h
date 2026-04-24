@@ -2,6 +2,6 @@
 #define MENU_INCLUDED
 
 void systemUpperBar();
-int logInMenu();
+int landingPageMenu();
 
 #endif // MENU_INCLUDED

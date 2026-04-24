@@ -9,7 +9,7 @@ void systemUpperBar(){
     printf("###################################################\n\n");
 }
 
-int logInMenu(){
+int landingPageMenu(){
     int choice;
     printf("1.) Sign Up\n");
     printf("2.) Log In\n");
