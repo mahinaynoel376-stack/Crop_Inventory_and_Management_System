@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "ViewInventoryProcesses.h"
+#include <conio.h>
+
 void clearBuffer(){
     while ((getchar()) != '\n');
 }
@@ -12,7 +15,7 @@ struct User{
 
 
 int LoginCheck(char *inputusename, char *inputpassword){
-    FILE *userDatabase = fopen("userDatabase.txt", "r");
+    FILE *userDatabase = fopen("Database/userDatabase.txt", "r");
     if (userDatabase == NULL){
         return 0;
     }
@@ -34,12 +37,14 @@ int LoginCheck(char *inputusename, char *inputpassword){
 
 void registration(){
     char username[50], password[50], cpassword[50];
-    printf("\nInput Username: ");
-    fgets(username, 50, stdin);
-    username[strcspn(username, "\n")] = 0;
-    int lswitch = 0;
+
+    int lswitch = 1;
+    char fmenuback;
 
     do {
+        printf("\nInput Username: ");
+        fgets(username, 50, stdin);
+        username[strcspn(username, "\n")] = 0;
         printf("Input Password: ");
         fgets(password, 50, stdin);
         password[strcspn(password, "\n")] = 0;
@@ -52,15 +57,53 @@ void registration(){
             printf("\nPasswords do not match, try again.\n");
         }
         else {
-            FILE *Register = fopen("userDatabase.txt", "a+");
+            FILE *CheckFile = fopen("Database/userDatabase.txt", "r");
+            int exists = 0;
 
-            fprintf(Register, "%s,%s\n", username, password);
-            printf("\nAccount Registered Successfully.\n\n");
-            fclose(Register);
-            lswitch = 1;
+            if (CheckFile != NULL){
+                char temppassword[50];
+                char existingusername[50];
+
+                while (fscanf(CheckFile, " %49[^,],%49s", existingusername, temppassword) == 2){
+                    if (strcmp(username, existingusername) == 0){
+                        exists = 1;
+                        break;
+                    }
+                }
+                fclose(CheckFile);
+            }
+
+            if (exists == 1) {
+                printf("\nUsername '%s' is already taken! Please try again.\n", username);
+                do{
+                    printf("\nGo back? (y/n): ");
+                    scanf(" %c", &fmenuback);
+                    clearBuffer();
+                    if (fmenuback == 'y' || fmenuback == 'Y' || fmenuback == 'n' || fmenuback == 'N'){
+                        break;
+                    }
+                    else{
+                        printf("\nError: Invalid Input.\n");
+                    }
+                } while (1);
+                if (fmenuback == 'y' || fmenuback == 'Y'){
+                    system("cls");
+                    lswitch = 0;
+                }
+
+            }
+            else{
+                FILE *Register = fopen("Database/userDatabase.txt", "a+");
+
+                fprintf(Register, "%s,%s\n", username, password);
+                system("cls");
+                printf("\n--------- Account Registered Successfully ---------\n\n");
+                fclose(Register);
+                lswitch = 0;
+            }
         }
 
-    } while (lswitch == 0);
+    } while (lswitch == 1);
 }
 
 void logInInputs(char *loginUsername, char *loginPassword){
@@ -85,3 +128,15 @@ void goBack(char *fmenuback, int *properinput){
     }
 }
 
+void notifications(char currentUser[]){
+    int curY = 2026, curM = 4, curD = 25;
+    loadData(currentUser);
+    printf("------------------ Notifications ------------------\n\n");
+    for (int i = 0; i < inventoryCount; i++) {
+        if (inventory[i].s_year < curY || (inventory[i].s_year == curY && inventory[i].s_month < curM) || (inventory[i].s_year == curY && inventory[i].s_month == curM && inventory[i].s_day < curD))
+            printf("[!] EXPIRED: %s (ID: %d)\n", inventory[i].name, inventory[i].ID);
+        else if (inventory[i].s_year == curY && inventory[i].s_month == curM && (inventory[i].s_day - curD <= 2))
+            printf("[*] URGENT: %s (ID: %d) expires within 48h!\n", inventory[i].name, inventory[i].ID);
+    }
+    printf("\n---------------------------------------------------\n\n");
+}

@@ -9,12 +9,10 @@ void systemUpperBar(){
     printf("###################################################\n\n");
 }
 
-void systemWelcome(){
+void systemWelcome(char currentUser[]){
     printf("###################################################\n");
-    printf("##                                               ##\n");
-    printf("##              Welcome To The System            ##\n");
-    printf("##                                               ##\n");
-    printf("###################################################\n\n");
+    printf("        Welcome To The System, %s      \n", currentUser);
+    printf("###################################################\n");
 }
 
 int landingPageMenu(){
@@ -25,6 +23,13 @@ int landingPageMenu(){
     printf("Enter Choice: ");
     scanf("%d", &choice);
     return choice;
+}
+void systemMainMenu(){
+    printf("\n###################################################\n");
+    printf("##                                               ##\n");
+    printf("##                   Main Menu                   ##\n");
+    printf("##                                               ##\n");
+    printf("###################################################\n\n");
 }
 
 int mainMenu(){
@@ -38,3 +43,20 @@ int mainMenu(){
     scanf("%d", &choice);
     return choice;
 }
+void systemViewInventory(){
+    printf("\n###################################################\n");
+    printf("##                Viewing Inventory              ##\n");
+    printf("###################################################\n\n");
+}
+
+int viewInventoryMenu(){
+    int choice;
+    printf("1.) Display Crop/Product List\n");
+    printf("2.) Add Product\n");
+    printf("3.) Back\n\n");
+    printf("Enter Choice: ");
+    scanf("%d", &choice);
+    return choice;
+}
+
+

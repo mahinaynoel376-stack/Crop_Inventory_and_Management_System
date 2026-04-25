@@ -9,23 +9,34 @@
 	<string.h>
 	<errno.h>
 
-1777016686 source:d:\c files\crop_inventory_and_management_system\menu_displays.c
+1777126434 source:d:\c files\crop_inventory_and_management_system\menu_displays.c
 	<stdio.h>
 	"menu.h"
 
-1777016714 d:\c files\crop_inventory_and_management_system\menu.h
+1777121554 d:\c files\crop_inventory_and_management_system\menu.h
 
-1777016931 source:d:\c files\crop_inventory_and_management_system\real_main.c
+1777126434 source:d:\c files\crop_inventory_and_management_system\real_main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
+	<conio.h>
 	"menu.h"
 	"LandingPageProcesses.h"
+	"ViewInventoryProcesses.h"
 
-1777017055 source:d:\c files\crop_inventory_and_management_system\landingpageprocesses.c
+1777125513 source:d:\c files\crop_inventory_and_management_system\landingpageprocesses.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ViewInventoryProcesses.h"
+	<conio.h>
+
+1777100969 d:\c files\crop_inventory_and_management_system\landingpageprocesses.h
+
+1777125614 source:d:\c files\crop_inventory_and_management_system\viewinventoryprocesses.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 
-1777016653 d:\c files\crop_inventory_and_management_system\landingpageprocesses.h
+1777125606 d:\c files\crop_inventory_and_management_system\viewinventoryprocesses.h
 
