@@ -3,7 +3,7 @@
 
 void systemUpperBar();
 int landingPageMenu();
-void systemWelcome();
+void systemWelcome(char currentUser[]);
 int mainMenu();
 void systemViewInventory();
 int viewInventoryMenu();

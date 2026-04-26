@@ -34,7 +34,7 @@ int main(){
                     printf("\n-------------- Logged In Succesfully --------------\n\n");
                     strcpy(activeUser, loginUsername);
                     int mainmenulswitch = 1;
-                    systemWelcome();
+                    systemWelcome(activeUser);
                     do{
                         systemMainMenu();
                         notifications(activeUser);
