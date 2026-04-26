@@ -2,9 +2,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include <conio.h>
+#include "CropCultivationGuide.h"
 #include "menu.h"
 #include "LandingPageProcesses.h"
 #include "ViewInventoryProcesses.h"
+
 
 
 
@@ -42,6 +44,8 @@ int main(){
                         clearBuffer();
                         switch(mainMenuChoice){
                         case 1:
+                            system("cls");
+                            cropCultivationGuideMenu();
                             break;
                         case 2:
                             system("cls");

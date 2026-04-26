@@ -40,3 +40,42 @@
 
 1777185915 d:\c files\crop_inventory_and_management_system\viewinventoryprocesses.h
 
+1777203031 source:d:\lawrence 1st year,  2nd sem\computer programming 2\programs\crop_inventory_and_management_system\landingpageprocesses.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ViewInventoryProcesses.h"
+	<conio.h>
+
+1777203031 d:\lawrence 1st year,  2nd sem\computer programming 2\programs\crop_inventory_and_management_system\viewinventoryprocesses.h
+
+1777203031 source:d:\lawrence 1st year,  2nd sem\computer programming 2\programs\crop_inventory_and_management_system\menu_displays.c
+	<stdio.h>
+	"menu.h"
+
+1777203031 d:\lawrence 1st year,  2nd sem\computer programming 2\programs\crop_inventory_and_management_system\menu.h
+
+1777203031 source:d:\lawrence 1st year,  2nd sem\computer programming 2\programs\crop_inventory_and_management_system\viewinventoryprocesses.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1777204627 source:d:\lawrence 1st year,  2nd sem\computer programming 2\programs\crop_inventory_and_management_system\cropcultivationguide.c
+	<stdio.h>
+	<stdlib.h>
+	"CropCultivationGuide.h"
+
+1777190052 d:\lawrence 1st year,  2nd sem\computer programming 2\programs\crop_inventory_and_management_system\cropcultivationguide.h
+
+1777204396 source:d:\lawrence 1st year,  2nd sem\computer programming 2\programs\crop_inventory_and_management_system\real_main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"CropCultivationGuide.h"
+	"menu.h"
+	"LandingPageProcesses.h"
+	"ViewInventoryProcesses.h"
+
+1777203031 d:\lawrence 1st year,  2nd sem\computer programming 2\programs\crop_inventory_and_management_system\landingpageprocesses.h
+
