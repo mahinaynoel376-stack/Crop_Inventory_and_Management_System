@@ -33,31 +33,39 @@ CropTemplate predefinedCrops[] = {
 int totalTemplates = 18;
 
 void calculateExpiry(struct Crop *n, int life) {
-    // We use (*n). because we are modifying the specific crop created in addCrop
     (*n).s_day = (*n).h_day + life;
     (*n).s_month = (*n).h_month;
     (*n).s_year = (*n).h_year;
 
-    int limit = 30;
-    int m = (*n).s_month;
+    int limit;
 
+    // Use a while loop so it can skip multiple months if 'life' is large
+    while (1) {
+        limit = 30; // Default
+        int m = (*n).s_month;
 
-    if (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) {
-        limit = 31;
-    } else if (m == 2) {
-        limit = 28;
-    }
+        if (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) {
+            limit = 31;
+        } else if (m == 2) {
+            // Basic leap year check: 2024, 2028, etc.
+            if ((*n).s_year % 4 == 0) limit = 29;
+            else limit = 28;
+        }
 
+        // If the day fits in the current month, we are done!
+        if ((*n).s_day <= limit) {
+            break;
+        }
 
-    if ((*n).s_day > limit) {
-        (*n).s_day = (*n).s_day - limit;
-        (*n).s_month = (*n).s_month + 1;
-    }
+        // Otherwise, subtract the limit and move to the next month
+        (*n).s_day -= limit;
+        (*n).s_month++;
 
-
-    if ((*n).s_month > 12) {
-        (*n).s_month = 1;
-        (*n).s_year = (*n).s_year + 1;
+        // If we go past December, reset to January and increment year
+        if ((*n).s_month > 12) {
+            (*n).s_month = 1;
+            (*n).s_year++;
+        }
     }
 }
 
