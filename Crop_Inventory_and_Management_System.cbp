@@ -32,6 +32,10 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename=".gitignore" />
+		<Unit filename="CropCultivationGuide.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="CropCultivationGuide.h" />
 		<Unit filename="LandingPageProcesses.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -46,6 +50,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="ViewInventoryProcesses.h" />
+		<Unit filename="fieldMonitoring.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="fieldMonitoring.h" />
 		<Unit filename="menu.h" />
 		<Extensions />
 	</Project>

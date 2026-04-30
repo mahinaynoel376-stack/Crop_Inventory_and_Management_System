@@ -49,6 +49,20 @@ void systemViewInventory(){
     printf("###################################################\n\n");
 }
 
+void systemFieldMonitoring(){
+    printf("\n###################################################\n");
+    printf("##                Field Monitoring               ##\n");
+    printf("###################################################\n\n");
+}
+
+void systemFieldGrid(){
+    printf("\n###################################################\n");
+    printf("##                     Fields                    ##\n");
+    printf("###################################################\n\n");
+}
+
+
+
 int viewInventoryMenu(){
     int choice;
     printf("1.) Display Crop/Product List\n");
@@ -58,5 +72,36 @@ int viewInventoryMenu(){
     scanf("%d", &choice);
     return choice;
 }
+
+int displayProductListMenu(){
+    int choice;
+    printf("\n1.) Update Crop\n");
+    printf("2.) Delete Crop\n");
+    printf("3.) Back\n\n");
+    printf("Enter Choice: ");
+    scanf("%d", &choice);
+    return choice;
+}
+
+int fieldMonitoringMenu(){
+    int choice;
+    printf("1.) View Field Grid\n");
+    printf("2.) Plant New Crop\n");
+    printf("3.) Back\n\n");
+    printf("Enter Choice: ");
+    scanf("%d", &choice);
+    return choice;
+}
+
+int displayFieldGridMenu(){
+    int choice;
+    printf("\n1.) Update Grid\n");
+    printf("2.) Delete Grid\n");
+    printf("3.) Back\n\n");
+    printf("Enter Choice: ");
+    scanf("%d", &choice);
+    return choice;
+}
+
 
 

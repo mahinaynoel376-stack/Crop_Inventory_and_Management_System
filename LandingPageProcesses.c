@@ -5,7 +5,8 @@
 #include <conio.h>
 
 void clearBuffer(){
-    while ((getchar()) != '\n');
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
 }
 
 struct User{
