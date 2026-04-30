@@ -6,6 +6,7 @@
 #include "menu.h"
 #include "LandingPageProcesses.h"
 #include "ViewInventoryProcesses.h"
+#include "fieldMonitoring.h"
 
 
 
@@ -56,7 +57,26 @@ int main(){
                                 clearBuffer();
                                 switch(viewInventoryMenuChoice){
                                 case 1:
-                                    displayProductList(activeUser);
+                                    system("cls");
+                                    int displayProductListlswitch = 1;
+                                    do{
+                                        displayProductList(activeUser);
+                                        int displayPoductListChoice = displayProductListMenu();
+                                        switch (displayPoductListChoice){
+                                        case 1:
+                                            updateCrop(activeUser);
+                                            break;
+                                        case 2:
+                                            deleteCrop(activeUser);
+                                            break;
+                                        case 3:
+                                            displayProductListlswitch = 0;
+                                            system("cls");
+                                            break;
+                                        default:
+                                            printf("\nError: Invalid Input.\n");
+                                        }
+                                    } while (displayProductListlswitch == 1);
                                     break;
                                 case 2:
                                     system("cls");
@@ -73,6 +93,47 @@ int main(){
                             break;
                         case 3:
                             system("cls");
+                            int fieldMonitoringlswitch = 1;
+                            do{
+                                systemFieldMonitoring();
+                                int fieldMonitoringChoice = fieldMonitoringMenu();
+                                clearBuffer();
+                                switch(fieldMonitoringChoice){
+                                case 1:
+                                    system("cls");
+                                    int displayFieldGridlswitch = 1;
+                                    do{
+                                        systemFieldGrid();
+                                        displayFieldGrid(activeUser);
+                                        int displayFieldGridChoice = displayFieldGridMenu();
+                                        switch (displayFieldGridChoice){
+                                        case 1:
+                                            updateFieldCrop(activeUser);
+                                            break;
+                                        case 2:
+                                            deleteFieldCrop(activeUser);
+                                            break;
+                                        case 3:
+                                            system("cls");
+                                            displayFieldGridlswitch = 0;
+                                            break;
+                                        default:
+                                            printf("\nError: Invalid Input.\n");
+                                        }
+                                    } while (displayFieldGridlswitch == 1);
+                                    break;
+                                case 2:
+                                    system("cls");
+                                    addCropToField(activeUser);
+                                    break;
+                                case 3:
+                                    system("cls");
+                                    fieldMonitoringlswitch = 0;
+                                    break;
+                                default:
+                                    printf("\nError: Invalid Input.\n");
+                                }
+                            } while (fieldMonitoringlswitch == 1);
                             break;
                         case 4:
                             system("cls");

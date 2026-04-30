@@ -7,6 +7,11 @@ void systemWelcome(char currentUser[]);
 int mainMenu();
 void systemViewInventory();
 int viewInventoryMenu();
+int displayProductListMenu();
 void systemMainMenu();
+void systemFieldMonitoring();
+int fieldMonitoringMenu();
+int displayFieldGridMenu();
+void systemFieldGrid();
 
 #endif // MENU_INCLUDED

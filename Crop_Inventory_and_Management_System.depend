@@ -79,3 +79,55 @@
 
 1777203031 d:\lawrence 1st year,  2nd sem\computer programming 2\programs\crop_inventory_and_management_system\landingpageprocesses.h
 
+1777467658 source:d:\c files\repo test crop system\integrated guide and crop facts\crop_inventory_and_management_system\landingpageprocesses.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ViewInventoryProcesses.h"
+	<conio.h>
+
+1777504291 d:\c files\repo test crop system\integrated guide and crop facts\crop_inventory_and_management_system\viewinventoryprocesses.h
+
+1777511411 source:d:\c files\repo test crop system\integrated guide and crop facts\crop_inventory_and_management_system\menu_displays.c
+	<stdio.h>
+	"menu.h"
+
+1777511411 d:\c files\repo test crop system\integrated guide and crop facts\crop_inventory_and_management_system\menu.h
+
+1777504955 source:d:\c files\repo test crop system\integrated guide and crop facts\crop_inventory_and_management_system\real_main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"CropCultivationGuide.h"
+	"menu.h"
+	"LandingPageProcesses.h"
+	"ViewInventoryProcesses.h"
+	"fieldMonitoring.h"
+
+1777206075 d:\c files\repo test crop system\integrated guide and crop facts\crop_inventory_and_management_system\cropcultivationguide.h
+
+1777206075 d:\c files\repo test crop system\integrated guide and crop facts\crop_inventory_and_management_system\landingpageprocesses.h
+
+1777511245 source:d:\c files\repo test crop system\integrated guide and crop facts\crop_inventory_and_management_system\viewinventoryprocesses.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+
+1777412474 source:d:\c files\repo test crop system\integrated guide and crop facts\crop_inventory_and_management_system\cropcultivationguide.c
+	<stdio.h>
+	<stdlib.h>
+	"CropCultivationGuide.h"
+
+1777511245 source:d:\c files\repo test crop system\integrated guide and crop facts\crop_inventory_and_management_system\fieldmonitoring.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	<conio.h>
+	"ViewInventoryProcesses.h"
+	"fieldMonitoring.h"
+
+1777502618 d:\c files\repo test crop system\integrated guide and crop facts\crop_inventory_and_management_system\fieldmonitoring.h
+
