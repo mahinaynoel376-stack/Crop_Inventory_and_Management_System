@@ -3,6 +3,7 @@
 #include <string.h>
 #include "ViewInventoryProcesses.h"
 #include <conio.h>
+#include <time.h>
 
 void clearBuffer(){
     int c;
@@ -130,14 +131,30 @@ void goBack(char *fmenuback, int *properinput){
 }
 
 void notifications(char currentUser[]){
-    int curY = 2026, curM = 4, curD = 25;
+    time_t t = time(NULL);
+    struct tm tm = *localtime(&t);
+
+    int curY = tm.tm_year + 1900;
+    int curM = tm.tm_mon + 1;
+    int curD = tm.tm_mday;
+
     loadData(currentUser);
     printf("------------------ Notifications ------------------\n\n");
+    printf("         \tCurrent Date: %02d/%02d/%d\n\n", curM, curD, curY);
+
     for (int i = 0; i < inventoryCount; i++) {
-        if (inventory[i].s_year < curY || (inventory[i].s_year == curY && inventory[i].s_month < curM) || (inventory[i].s_year == curY && inventory[i].s_month == curM && inventory[i].s_day < curD))
-            printf("[!] EXPIRED: %s (ID: %d)\n", inventory[i].name, inventory[i].ID);
-        else if (inventory[i].s_year == curY && inventory[i].s_month == curM && (inventory[i].s_day - curD <= 2))
-            printf("[*] URGENT: %s (ID: %d) expires within 48h!\n", inventory[i].name, inventory[i].ID);
+        // Check for Expired
+        if (inventory[i].s_year < curY ||
+           (inventory[i].s_year == curY && inventory[i].s_month < curM) ||
+           (inventory[i].s_year == curY && inventory[i].s_month == curM && inventory[i].s_day < curD)) {
+
+            printf("   [!] EXPIRED: %s (ID: %d)\n", inventory[i].name, inventory[i].ID);
+        }
+        // Check for Urgent (within 2 days)
+        else if (inventory[i].s_year == curY && inventory[i].s_month == curM && (inventory[i].s_day - curD <= 2 && inventory[i].s_day - curD >= 0)) {
+
+            printf("   [*] URGENT: %s (ID: %d) expires within 48h!\n", inventory[i].name, inventory[i].ID);
+        }
     }
     printf("\n---------------------------------------------------\n\n");
 }

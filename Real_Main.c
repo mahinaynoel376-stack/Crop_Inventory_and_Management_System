@@ -169,6 +169,7 @@ int main(){
             lswitch = 0;
             break;
         default:
+            system("cls");
             printf("\nError: Invalid Input.\n\n");
         }
     }  while(lswitch == 1);
