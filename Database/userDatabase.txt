@@ -13,3 +13,5 @@ sds,123
 Manny,123
 MANNy,123
 lawrence,lawrence123
+reymar,padernal
+jl,lawski

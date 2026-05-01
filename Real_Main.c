@@ -74,6 +74,7 @@ int main(){
                                             system("cls");
                                             break;
                                         default:
+                                            system("cls");
                                             printf("\nError: Invalid Input.\n");
                                         }
                                     } while (displayProductListlswitch == 1);
@@ -138,11 +139,6 @@ int main(){
                         case 4:
                             system("cls");
                             printf("\n------------- You have been Signed Out ------------\n\n");
-                            mainmenulswitch = 0;
-                            break;
-                        case 5:
-                            printf("\n---------- Thank You for Using the System ---------\n\n");
-                            lswitch = 0;
                             mainmenulswitch = 0;
                             break;
                         default:

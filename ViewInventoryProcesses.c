@@ -2,11 +2,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <conio.h>
+#include <time.h>
 
 struct Crop {
     int ID;
     char name[30];
-    float quantity; // Standardized to float for Acres/KG
+    float quantity; //float for Acres/KG
     int storageMode;
     int h_year, h_month, h_day;
     int s_year, s_month, s_day;
@@ -73,7 +74,6 @@ void calculateExpiry(struct Crop *n, int life) {
     }
 }
 
-// Fixed loadData to use %f for quantity
 void loadData(char currentUser[]) {
     char fileName[100];
     sprintf(fileName, "Database/%s_crop_database.txt", currentUser);
@@ -81,8 +81,8 @@ void loadData(char currentUser[]) {
     FILE *f = fopen(fileName, "r");
     inventoryCount = 0;
     if (f == NULL) return;
+    if (f == NULL) return;
 
-    // Added %f to match the float quantity in struct
     while (inventoryCount < 100 && fscanf(f, " %d,%29[^,],%f,%d,%d/%d/%d,%d/%d/%d",
            &inventory[inventoryCount].ID, inventory[inventoryCount].name,
            &inventory[inventoryCount].quantity, &inventory[inventoryCount].storageMode,
@@ -93,7 +93,7 @@ void loadData(char currentUser[]) {
     fclose(f);
 }
 
-// Fixed addCrop formatting
+
 void addCrop(char currentUser[]) {
     struct Crop n;
     int choice, mode;
@@ -106,22 +106,101 @@ void addCrop(char currentUser[]) {
     for (int i = 0; i < totalTemplates; i++) printf("%2d. %-16s %s", i+1, predefinedCrops[i].name, (i+1)%3==0 ? "\n":"");
     printf("\n-----------------------------------------------------------------\n");
 
-    printf("\nChoice (1-18): ");
-    scanf("%d", &choice);
+    while(1){
+        printf("\nChoice (1-18): ");
+        scanf("%d", &choice);
+        if (choice >= 1 && choice <= 18){
+            break;
+        }
+        else{
+            printf("\n[Error]: Invalid Choice, please pick from 1 to 18.\n");
+        }
+    }
     int idx = choice - 1;
     strcpy(n.name, predefinedCrops[idx].name);
+    int validchoice = 0;
 
-    printf("Storage: 1. Room Temp  2. Refrigerated: ");
-    scanf("%d", &mode);
+    printf("\n[STORAGE SELECTION]\n");
+    printf("1.) Room Temperature (Standard Shelf Life)\n");
+    printf("2.) Refrigerated     (Extended Shelf Life)\n");
+    do{
+        printf("Enter Choice: ");
+        scanf("%d", &mode);
+        if (mode == 1 || mode == 2){
+            validchoice = 1;
+        }
+        else{
+            printf("[Error]: Invalid Choice, please pick 1 or 2.\n\n");
+        }
+    } while (validchoice == 0);
     n.storageMode = mode;
 
     int shelfLife = (mode == 2) ? predefinedCrops[idx].shelfLifeRef : predefinedCrops[idx].shelfLifeRoom;
+    while(1){
+        printf("\nQuantity (kg): ");
+        scanf("%f", &n.quantity);
+        if (n.quantity < 0) printf("[Error]: Invalid Quantity\n");
+        else{
+            break;
+        }
+    }
+    int harvestdatechoice;
+    time_t t = time(NULL);
+    struct tm tm = *localtime(&t);
+    while(1){
+        printf("\nSet Harvest Date as:\n1. Today's Date (Automated)\n2. Enter Date Manually\nChoice: ");
+        scanf("%d", &harvestdatechoice);
 
-    printf("Quantity (kg): ");
-    scanf("%f", &n.quantity); // Fixed: using %f for float
-    printf("Harvest Date (YYYY MM DD): ");
-    scanf("%d %d %d", &n.h_year, &n.h_month, &n.h_day);
+        switch(harvestdatechoice){
+            case 1:
+                n.h_year = tm.tm_year + 1900;
+                n.h_month = tm.tm_mon + 1;
+                n.h_day = tm.tm_mday;
+                break;
+            case 2:
+                while(1){
+                    printf("\nHarvest Date (YYYY MM DD): ");
+                    if (scanf("%d %d %d", &n.h_year, &n.h_month, &n.h_day) != 3) {
+                        printf("[ERROR] Invalid format! Please use numbers only (e.g., 2026 05 01).\n");
+                        while(getchar() != '\n'); // Clear the "trash" from the input buffer
+                        continue;
+                    }
 
+                    if (n.h_year < 2000 || n.h_year > 2100) {
+                        printf("[ERROR] Year out of range. Please enter a year between 2000 and 2100.");
+                    }
+                    else if (n.h_month < 1 || n.h_month > 12) {
+                        printf("[ERROR] Invalid month! Must be between 01 and 12.");
+                    }
+                    else {
+                        //Logic Check for Days (Account for Leap Years)
+                        int daysInMonth = 31;
+                        if (n.h_month == 4 || n.h_month == 6 || n.h_month == 9 || n.h_month == 11) {
+                            daysInMonth = 30;
+                        } else if (n.h_month == 2) {
+                            // Leap year logic: divisible by 4 but not 100, unless divisible by 400
+                            if ((n.h_year % 4 == 0 && n.h_year % 100 != 0) || (n.h_year % 400 == 0))
+                                daysInMonth = 29;
+                            else
+                                daysInMonth = 28;
+                        }
+
+                        if (n.h_day < 1 || n.h_day > daysInMonth) {
+                            printf("[ERROR] Day %d does not exist in Month %d of %d.", n.h_day, n.h_month, n.h_year);
+                        }
+                        else{
+                            break;
+                        }
+                    }
+                }
+                break;
+            default:
+                printf("[Error]: Invalid Choice, Please choose 1 or 2.\n");
+        }
+        if (harvestdatechoice == 1 || harvestdatechoice == 2){
+            break;
+        }
+    }
     calculateExpiry(&n, shelfLife);
 
     char fileName[100];
@@ -138,7 +217,7 @@ void addCrop(char currentUser[]) {
     }
 }
 
-// Visual layout fix for List
+
 void displayProductList(char currentUser[]){
     loadData(currentUser);
     printf("\n%-5s %-15s %-8s %-10s %-12s %-12s\n", "ID", "Name", "Qty", "Mode", "Harvest", "Expiry");
@@ -152,7 +231,6 @@ void displayProductList(char currentUser[]){
     }
 }
 
-// Fixed updateCrop to use correct variable names
 void updateCrop(char currentUser[]) {
     int targetID, found = 0;
     printf("\nEnter the ID of the crop you want to UPDATE: ");
@@ -190,7 +268,6 @@ void updateCrop(char currentUser[]) {
                     return;
             }
 
-            // Re-calculate expiry if mode or date changed
             for(int j=0; j < totalTemplates; j++) {
                 if(strcmp(inventory[i].name, predefinedCrops[j].name) == 0) {
                     int life = (inventory[i].storageMode == 2) ?

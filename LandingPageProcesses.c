@@ -140,7 +140,7 @@ void notifications(char currentUser[]){
 
     loadData(currentUser);
     printf("------------------ Notifications ------------------\n\n");
-    printf("         \tCurrent Date: %02d/%02d/%d\n\n", curM, curD, curY);
+    printf("        \tCurrent Date: %02d/%02d/%d\n\n", curM, curD, curY);
 
     for (int i = 0; i < inventoryCount; i++) {
         // Check for Expired

@@ -11,7 +11,7 @@ void systemUpperBar(){
 
 void systemWelcome(char currentUser[]){
     printf("###################################################\n");
-    printf("        Welcome To The System, %s      \n", currentUser);
+    printf("        Welcome to the system, %s      \n", currentUser);
     printf("###################################################\n");
 }
 
@@ -37,8 +37,7 @@ int mainMenu(){
     printf("1.) Crop Cultivation Guide\n");
     printf("2.) View Inventory\n");
     printf("3.) Crop Growth Monitoring\n");
-    printf("4.) Sign Out\n");
-    printf("5.) Exit System\n\n");
+    printf("4.) Sign Out\n\n");
     printf("Enter Choice: ");
     scanf("%d", &choice);
     return choice;

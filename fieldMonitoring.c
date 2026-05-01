@@ -24,23 +24,67 @@ void addCropToField(char currentUser[]) {
 
     printf("Total Acres to Plant: ");
     scanf("%f", &acres);
-    n.quantity = acres; //
+    n.quantity = acres;
 
-    printf("\nSet Planting Date as:\n1. Today's Date (Automated)\n2. Enter Date Manually\nChoice: ");
-    scanf("%d", &timeChoice);
+    time_t t = time(NULL);
+    struct tm tm = *localtime(&t);
 
-    if (timeChoice == 1) {
-        time_t t = time(NULL);
-        struct tm tm = *localtime(&t);
-        n.h_year = tm.tm_year + 1900;
-        n.h_month = tm.tm_mon + 1;
-        n.h_day = tm.tm_mday; //
-    } else {
-        printf("Enter Planting Date (YYYY MM DD): ");
-        scanf("%d %d %d", &n.h_year, &n.h_month, &n.h_day);
+    while(1){
+        printf("\nSet Planting Date as:\n1. Today's Date (Automated)\n2. Enter Date Manually\nChoice: ");
+        scanf("%d", &timeChoice);
+
+        switch(timeChoice){
+            case 1:
+                n.h_year = tm.tm_year + 1900;
+                n.h_month = tm.tm_mon + 1;
+                n.h_day = tm.tm_mday;
+                break;
+            case 2:
+                while(1){
+                    printf("\nHarvest Date (YYYY MM DD): ");
+                    if (scanf("%d %d %d", &n.h_year, &n.h_month, &n.h_day) != 3) {
+                        printf("[ERROR] Invalid format! Please use numbers only (e.g., 2026 05 01).\n");
+                        while(getchar() != '\n'); // Clear the "trash" from the input buffer
+                        continue;
+                    }
+
+                    if (n.h_year < 2000 || n.h_year > 2100) {
+                        printf("[ERROR] Year out of range. Please enter a year between 2000 and 2100.");
+                    }
+                    else if (n.h_month < 1 || n.h_month > 12) {
+                        printf("[ERROR] Invalid month! Must be between 01 and 12.");
+                    }
+                    else {
+                        //Logic Check for Days (Account for Leap Years)
+                        int daysInMonth = 31;
+                        if (n.h_month == 4 || n.h_month == 6 || n.h_month == 9 || n.h_month == 11) {
+                            daysInMonth = 30;
+                        } else if (n.h_month == 2) {
+                            // Leap year logic: divisible by 4 but not 100, unless divisible by 400
+                            if ((n.h_year % 4 == 0 && n.h_year % 100 != 0) || (n.h_year % 400 == 0))
+                                daysInMonth = 29;
+                            else
+                                daysInMonth = 28;
+                        }
+
+                        if (n.h_day < 1 || n.h_day > daysInMonth) {
+                            printf("[ERROR] Day %d does not exist in Month %d of %d.", n.h_day, n.h_month, n.h_year);
+                        }
+                        else{
+                            break;
+                        }
+                    }
+                }
+                break;
+            default:
+                printf("[Error]: Invalid Choice, Please choose 1 or 2.\n");
+        }
+        if (timeChoice == 1 || timeChoice == 2){
+            break;
+        }
     }
 
-    // Auto-calculate Harvest Date based on growth periods (e.g., Bananas 9-16 months)
+    // Auto-calculate Harvest Date based on growth periods
     n.s_year = n.h_year; n.s_month = n.h_month; n.s_day = n.h_day;
     calculateExpiry(&n, predefinedCrops[idx].growthDays);
 
@@ -101,7 +145,7 @@ void displayFieldGrid(char currentUser[]) {
     fclose(f);
 }
 
-// 3. UPDATE/DELETE ACTIONS
+
 void updateFieldCrop(char currentUser[]) {
     char fileName[100];
     sprintf(fileName, "Database/%s_monitoring.txt", currentUser);
