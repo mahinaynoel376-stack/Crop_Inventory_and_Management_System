@@ -119,6 +119,7 @@ int main(){
                                             displayFieldGridlswitch = 0;
                                             break;
                                         default:
+                                            system("cls");
                                             printf("\nError: Invalid Input.\n");
                                         }
                                     } while (displayFieldGridlswitch == 1);
@@ -142,6 +143,7 @@ int main(){
                             mainmenulswitch = 0;
                             break;
                         default:
+                            system("cls");
                             printf("\nError: Invalid Input.\n\n");
                         }
                         loginfailed = 0;

@@ -148,12 +148,12 @@ void notifications(char currentUser[]){
            (inventory[i].s_year == curY && inventory[i].s_month < curM) ||
            (inventory[i].s_year == curY && inventory[i].s_month == curM && inventory[i].s_day < curD)) {
 
-            printf("   [!] EXPIRED: %s (ID: %d)\n", inventory[i].name, inventory[i].ID);
+            printf("   [!] SPOILED: %s (ID: %d)\n", inventory[i].name, inventory[i].ID);
         }
         // Check for Urgent (within 2 days)
         else if (inventory[i].s_year == curY && inventory[i].s_month == curM && (inventory[i].s_day - curD <= 2 && inventory[i].s_day - curD >= 0)) {
 
-            printf("   [*] URGENT: %s (ID: %d) expires within 48h!\n", inventory[i].name, inventory[i].ID);
+            printf("   [*] URGENT: %s (ID: %d) spoils within 48h!\n", inventory[i].name, inventory[i].ID);
         }
     }
     printf("\n---------------------------------------------------\n\n");

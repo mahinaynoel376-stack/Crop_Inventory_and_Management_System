@@ -24,6 +24,14 @@ struct Crop inventory[100];
 int inventoryCount = 0;
 
 CropTemplate predefinedCrops[] = {
+    {"Yellow Corn - OPV", 2, 6, 100},
+    {"Hybrid White Corn", 2, 5, 110},
+    {"Sweet Corn", 2, 7, 75},
+    {"Glutinous Corn", 2, 4, 70},
+    {"Rice (Tubigan 18)", 365, 730, 110}, // Room: 1yr, Ref: 2yrs
+    {"Rice (Dorado)", 365, 730, 114},
+    {"Heirloom Rice", 180, 365, 135},
+
     {"Cabbage", 14, 60, 85},
     {"Chinese Cabbage", 4, 14, 65},
     {"Carrots", 5, 28, 75},
@@ -44,32 +52,43 @@ CropTemplate predefinedCrops[] = {
     {"Banana", 14, 14, 365}
 };
 
-int totalTemplates = 18;
+int totalTemplates = 25;
+
 
 // Logic for calculating expiry based on shelf life
 void calculateExpiry(struct Crop *n, int life) {
-    n->s_day = n->h_day + life;
-    n->s_month = n->h_month;
-    n->s_year = n->h_year;
+    (*n).s_day = (*n).h_day + life;
+    (*n).s_month = (*n).h_month;
+    (*n).s_year = (*n).h_year;
 
+    int limit;
+
+    // Use a while loop so it can skip multiple months if 'life' is large
     while (1) {
-        int limit = 30;
-        int m = n->s_month;
+        limit = 30; // Default
+        int m = (*n).s_month;
 
-        if (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) limit = 31;
-        else if (m == 2) {
-            if (n->s_year % 4 == 0) limit = 29;
+        if (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) {
+            limit = 31;
+        } else if (m == 2) {
+            // Basic leap year check: 2024, 2028, etc.
+            if ((*n).s_year % 4 == 0) limit = 29;
             else limit = 28;
         }
 
-        if (n->s_day <= limit) break;
+        // If the day fits in the current month, we are done!
+        if ((*n).s_day <= limit) {
+            break;
+        }
 
-        n->s_day -= limit;
-        n->s_month++;
+        // Otherwise, subtract the limit and move to the next month
+        (*n).s_day -= limit;
+        (*n).s_month++;
 
-        if (n->s_month > 12) {
-            n->s_month = 1;
-            n->s_year++;
+        // If we go past December, reset to January and increment year
+        if ((*n).s_month > 12) {
+            (*n).s_month = 1;
+            (*n).s_year++;
         }
     }
 }
@@ -102,8 +121,14 @@ void addCrop(char currentUser[]) {
     if (inventoryCount == 0) n.ID = 1001;
     else n.ID = inventory[inventoryCount - 1].ID + 1;
 
-    printf("\n-------------------------- Select Crop --------------------------\n\n");
-    for (int i = 0; i < totalTemplates; i++) printf("%2d. %-16s %s", i+1, predefinedCrops[i].name, (i+1)%3==0 ? "\n":"");
+    printf("\n-------------------------- Select Crop --------------------------");
+    printf("\n\n          ##Grains##          \n\n");
+    for (int i = 0; i < totalTemplates; i++){
+            printf("%2d. %-16s %s", i+1, predefinedCrops[i].name, (i+1)%3==0 ? "\n":"");
+                if (i == 6){
+                    printf("\n\n          ##Vegetables##          \n\n");
+                }
+    }
     printf("\n-----------------------------------------------------------------\n");
 
     while(1){
@@ -229,6 +254,7 @@ void displayProductList(char currentUser[]){
                inventory[i].h_month, inventory[i].h_day, inventory[i].h_year,
                inventory[i].s_month, inventory[i].s_day, inventory[i].s_year);
     }
+    printf("-------------------------------------------------------------------------\n");
 }
 
 void updateCrop(char currentUser[]) {

@@ -17,13 +17,26 @@ void addCropToField(char currentUser[]) {
         printf("%2d. %-16s %s", i+1, predefinedCrops[i].name, (i+1)%3==0 ? "\n":"");
     }
     printf("\n-----------------------------------------------------------------------\n");
-    printf("\nChoice (1-18): ");
-    scanf("%d", &choice);
+    while(1){
+        printf("\nChoice (1-18): ");
+        scanf("%d", &choice);
+        if(choice >= 1 && choice <= 18){
+            break;
+        }
+        else{
+            printf("\nError: Invalid Choice.");
+        }
+    }
     int idx = choice - 1;
     strcpy(n.name, predefinedCrops[idx].name);
-
-    printf("Total Acres to Plant: ");
-    scanf("%f", &acres);
+    while(1){
+        printf("Total Acres to Plant: ");
+        scanf("%f", &acres);
+        if (acres < 0) printf("[Error]: Invalid acres\n");
+        else{
+            break;
+        }
+    }
     n.quantity = acres;
 
     time_t t = time(NULL);
