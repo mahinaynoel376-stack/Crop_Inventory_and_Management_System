@@ -121,6 +121,7 @@ int main(){
                                         default:
                                             system("cls");
                                             printf("\nError: Invalid Input.\n");
+                                            clearBuffer();
                                         }
                                     } while (displayFieldGridlswitch == 1);
                                     break;
@@ -133,6 +134,7 @@ int main(){
                                     fieldMonitoringlswitch = 0;
                                     break;
                                 default:
+                                    system("cls");
                                     printf("\nError: Invalid Input.\n");
                                 }
                             } while (fieldMonitoringlswitch == 1);

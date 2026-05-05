@@ -12,21 +12,19 @@ void addCropToField(char currentUser[]) {
     int choice, timeChoice;
     float acres;
 
-    printf("\n-------------------------- Planting New Crop --------------------------\n\n");
+    printf("\n-------------------------- Select Crop --------------------------\n");
+    printf("\n  ## Grains ##\n");
     for (int i = 0; i < totalTemplates; i++) {
-        printf("%2d. %-16s %s", i+1, predefinedCrops[i].name, (i+1)%3==0 ? "\n":"");
+        printf("[%2d] %-35s ", i + 1, predefinedCrops[i].name);
+        if ((i + 1) % 2 == 0) printf("\n");
+        if (i == 6) printf("\n\n  ## Vegetables ##\n");
     }
-    printf("\n-----------------------------------------------------------------------\n");
-    while(1){
-        printf("\nChoice (1-18): ");
+
+    do {
+        printf("\nChoice (1-%d): ", totalTemplates);
         scanf("%d", &choice);
-        if(choice >= 1 && choice <= 18){
-            break;
-        }
-        else{
-            printf("\nError: Invalid Choice.");
-        }
-    }
+    } while (choice < 1 || choice > totalTemplates);
+
     int idx = choice - 1;
     strcpy(n.name, predefinedCrops[idx].name);
     while(1){
@@ -123,15 +121,23 @@ void displayFieldGrid(char currentUser[]) {
 
     struct Crop batch[3];
     int count;
-
+    int plotcount = 1;
     while (1) {
         count = 0;
         // fscanf must match the 8 fields saved in addCropToField
         while (count < 3 && fscanf(f, " %29[^,],%d/%d/%d,%d/%d/%d,%*d,%f",
                batch[count].name, &batch[count].h_year, &batch[count].h_month, &batch[count].h_day,
-               &batch[count].s_year, &batch[count].s_month, &batch[count].s_day, &batch[count].quantity) == 8) count++;
+               &batch[count].s_year, &batch[count].s_month, &batch[count].s_day, &batch[count].quantity) == 8){
+        count++;
+       }
 
         if (count == 0) break;
+
+        for (int i = 0; i < count; i++) {
+            printf("Plot %-18d  ", plotcount);
+            plotcount++;
+        }
+        printf("\n");
 
         for (int i = 0; i < count; i++) {
             printf("%c", 201); for(int j=0; j<21; j++) printf("%c", 205); printf("%c  ", 187);
@@ -175,7 +181,11 @@ void updateFieldCrop(char currentUser[]) {
     int target;
     printf("\nEnter Plot Number to update (1-%d): ", total);
     scanf("%d", &target);
-    if (target < 1 || target > total) return;
+    if (target < 1 || target > total){
+        system("cls");
+        printf("\nError: Invalid Input.\n");
+        return;
+    }
     int idx = target - 1;
 
     printf("New Planting Date (YYYY MM DD): ");
@@ -219,7 +229,11 @@ void deleteFieldCrop(char currentUser[]) {
     int target;
     printf("\nEnter Plot Number to DELETE (1-%d): ", total);
     scanf("%d", &target);
-    if (target < 1 || target > total) return;
+    if (target < 1 || target > total){
+        system("cls");
+        printf("\nError: Invalid Input.\n");
+        return;
+    }
 
     f = fopen(fileName, "w");
     for (int i = 0; i < total; i++) {

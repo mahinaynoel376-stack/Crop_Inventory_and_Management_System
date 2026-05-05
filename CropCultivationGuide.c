@@ -273,85 +273,224 @@ void farmingTipsMenu() {
 
         switch(choice) {
 
-            case 1:
-                printf("SOIL MANAGEMENT IN SLOPING AREAS\n");
-                printf("- Use contour farming to reduce erosion in Lantapan hills\n");
-                printf("- Add compost and organic matter regularly\n");
-                printf("- Avoid burning crop residues\n");
-                printf("- Keep soil covered to prevent nutrient loss\n");
-                break;
+        case 1:
+            printf("\n------------------------------------------------------------\n");
+            printf(" SOIL MANAGEMENT IN SLOPING AREAS\n");
+            printf("------------------------------------------------------------\n");
 
-            case 2:
-                printf("UPLAND CORN FARMING\n");
-                printf("- Plant at start of rainy season (March to May)\n");
-                printf("- Use improved hybrid corn varieties\n");
-                printf("- Apply fertilizer in split application\n");
-                printf("- Maintain proper spacing to avoid competition\n");
-                break;
+            printf("DESCRIPTION:\n");
+            printf("Sloping upland farms (like in Bukidnon) are prone to erosion\n");
+            printf("and nutrient loss if not managed properly.\n\n");
 
-            case 3:
-                printf("HIGH-VALUE VEGETABLE FARMING\n");
-                printf("- Ideal crops: cabbage, carrots, pechay, beans\n");
-                printf("- Use raised beds for drainage control\n");
-                printf("- Prevent waterlogging during heavy rains\n");
-                printf("- Monitor daily for pests and diseases\n");
-                break;
+            printf("PRACTICES:\n");
+            printf("- Contour farming slows water runoff and prevents soil loss\n");
+            printf("- Add compost/manure to improve soil fertility\n");
+            printf("- Avoid burning crop residues to preserve nutrients\n");
+            printf("- Use mulch or cover crops to protect soil surface\n\n");
 
-            case 4:
-                printf("COFFEE FARMING (ARABICA)\n");
-                printf("- Lantapan elevation is ideal for Arabica coffee\n");
-                printf("- Requires partial shade (banana/trees)\n");
-                printf("- Prune regularly to improve yield\n");
-                printf("- Harvest only ripe red cherries\n");
-                break;
+            printf("EXTRA TIPS:\n");
+            printf("- Plant legumes to add nitrogen to the soil\n");
+            printf("- Combine with agroforestry (trees + crops)\n\n");
 
-            case 5:
-                printf("ORGANIC FERTILIZATION\n");
-                printf("- Use compost, manure, and vermicast\n");
-                printf("- Improves soil fertility long-term\n");
-                printf("- Reduces dependence on chemical fertilizers\n");
-                printf("- Apply before planting and early growth stages\n");
-                break;
+            printf("REFERENCE:\n");
+            printf("DA-BSWM | FAO Soil Management | PCARRD SALT\n");
+            break;
 
-            case 6:
-                printf("EROSION CONTROL\n");
-                printf("- Build contour hedgerows using grasses\n");
-                printf("- Practice terracing in steep areas\n");
-                printf("- Maintain ground cover at all times\n");
-                printf("- Prevent soil runoff during heavy rains\n");
-                break;
+        case 2:
+            printf("\n------------------------------------------------------------\n");
+            printf(" UPLAND CORN FARMING\n");
+            printf("------------------------------------------------------------\n");
 
-            case 7:
-                printf("PEST MANAGEMENT\n");
-                printf("- High humidity increases fungal diseases\n");
-                printf("- Practice crop rotation\n");
-                printf("- Use natural pesticides (garlic, chili, neem)\n");
-                printf("- Remove infected plants immediately\n");
-                break;
+            printf("DESCRIPTION:\n");
+            printf("Corn is a major upland crop that requires proper timing,\n");
+            printf("spacing, and fertilization for good yield.\n\n");
 
-            case 8:
-                printf("RAINY SEASON STRATEGY\n");
-                printf("- Ensure proper drainage systems\n");
-                printf("- Use raised beds for vegetables\n");
-                printf("- Avoid planting in saturated soil\n");
-                printf("- Monitor fields frequently\n");
-                break;
+            printf("PRACTICES:\n");
+            printf("- Plant early rainy season (March–May)\n");
+            printf("- Use improved or hybrid corn varieties\n");
+            printf("- Apply fertilizer in split application\n");
+            printf("- Maintain proper spacing (70–75 cm rows)\n\n");
 
-            case 9:
-                printf("POST-HARVEST HANDLING\n");
-                printf("- Proper drying prevents mold in corn\n");
-                printf("- Store crops in dry, ventilated areas\n");
-                printf("- Handle vegetables gently to avoid damage\n");
-                printf("- Proper storage increases market value\n");
-                break;
+            printf("EXTRA TIPS:\n");
+            printf("- Control weeds within first 30 days\n");
+            printf("- Monitor pests like corn borers\n\n");
 
-            case 10:
-                printf("SMALL FARM PLANNING\n");
-                printf("- Diversify crops: corn, vegetables, coffee\n");
-                printf("- Stagger planting for continuous income\n");
-                printf("- Prioritize high-value crops\n");
-                printf("- Match planting with rainfall patterns\n");
-                break;
+            printf("REFERENCE:\n");
+            printf("DA Corn Guide | PhilMaize | FAO Maize Manual\n");
+            break;
+
+        case 3:
+            printf("\n------------------------------------------------------------\n");
+            printf(" HIGH-VALUE VEGETABLE FARMING\n");
+            printf("------------------------------------------------------------\n");
+
+            printf("DESCRIPTION:\n");
+            printf("Vegetables provide higher income but need intensive care\n");
+            printf("and regular monitoring.\n\n");
+
+            printf("PRACTICES:\n");
+            printf("- Grow crops like cabbage, carrots, pechay, beans\n");
+            printf("- Use raised beds for better drainage\n");
+            printf("- Prevent waterlogging during heavy rains\n");
+            printf("- Monitor daily for pests and diseases\n\n");
+
+            printf("EXTRA TIPS:\n");
+            printf("- Use mulch to retain soil moisture\n");
+            printf("- Practice crop rotation\n\n");
+
+            printf("REFERENCE:\n");
+            printf("BPI | DA-HVCDP | AVRDC Guides\n");
+            break;
+
+        case 4:
+            printf("\n------------------------------------------------------------\n");
+            printf(" COFFEE FARMING (ARABICA)\n");
+            printf("------------------------------------------------------------\n");
+
+            printf("DESCRIPTION:\n");
+            printf("Arabica coffee grows well in cool, high-elevation areas\n");
+            printf("like uplands of Bukidnon.\n\n");
+
+            printf("PRACTICES:\n");
+            printf("- Requires partial shade (banana or trees)\n");
+            printf("- Regular pruning improves yield\n");
+            printf("- Harvest only ripe red cherries\n\n");
+
+            printf("EXTRA TIPS:\n");
+            printf("- Apply organic fertilizer regularly\n");
+            printf("- Maintain proper spacing between plants\n\n");
+
+            printf("REFERENCE:\n");
+            printf("DA Coffee Guide | Coffee Roadmap PH | Nestle Manual\n");
+            break;
+
+        case 5:
+            printf("\n------------------------------------------------------------\n");
+            printf(" ORGANIC FERTILIZATION\n");
+            printf("------------------------------------------------------------\n");
+
+            printf("DESCRIPTION:\n");
+            printf("Organic fertilizers improve soil health and reduce chemical\n");
+            printf("dependency over time.\n\n");
+
+            printf("PRACTICES:\n");
+            printf("- Use compost, manure, and vermicast\n");
+            printf("- Apply before planting and early growth stage\n");
+            printf("- Improves long-term soil fertility\n\n");
+
+            printf("EXTRA TIPS:\n");
+            printf("- Combine with crop rotation\n");
+            printf("- Avoid over-application\n\n");
+
+            printf("REFERENCE:\n");
+            printf("RA 10068 | DA Organic Program | FAO Organic Guide\n");
+            break;
+
+        case 6:
+            printf("\n------------------------------------------------------------\n");
+            printf(" EROSION CONTROL\n");
+            printf("------------------------------------------------------------\n");
+
+            printf("DESCRIPTION:\n");
+            printf("Erosion removes topsoil and nutrients, reducing productivity.\n\n");
+
+            printf("PRACTICES:\n");
+            printf("- Build contour hedgerows (grass barriers)\n");
+            printf("- Practice terracing on steep slopes\n");
+            printf("- Maintain ground cover at all times\n\n");
+
+            printf("EXTRA TIPS:\n");
+            printf("- Avoid over-tilling soil\n");
+            printf("- Use deep-rooted plants\n\n");
+
+            printf("REFERENCE:\n");
+            printf("DENR | FAO Erosion Guide | PCARRD SALT\n");
+            break;
+
+        case 7:
+            printf("\n------------------------------------------------------------\n");
+            printf(" PEST MANAGEMENT\n");
+            printf("------------------------------------------------------------\n");
+
+            printf("DESCRIPTION:\n");
+            printf("Proper pest management reduces crop damage and improves yield.\n\n");
+
+            printf("PRACTICES:\n");
+            printf("- Practice crop rotation\n");
+            printf("- Use natural pesticides (garlic, chili, neem)\n");
+            printf("- Remove infected plants immediately\n\n");
+
+            printf("EXTRA TIPS:\n");
+            printf("- Encourage beneficial insects\n");
+            printf("- Monitor crops regularly\n\n");
+
+            printf("REFERENCE:\n");
+            printf("DA IPM | IRRI | FAO Pest Control\n");
+            break;
+
+        case 8:
+            printf("\n------------------------------------------------------------\n");
+            printf(" RAINY SEASON STRATEGY\n");
+            printf("------------------------------------------------------------\n");
+
+            printf("DESCRIPTION:\n");
+            printf("Heavy rains can damage crops if proper preparation is not done.\n\n");
+
+            printf("PRACTICES:\n");
+            printf("- Ensure proper drainage systems\n");
+            printf("- Use raised beds\n");
+            printf("- Avoid planting in saturated soil\n\n");
+
+            printf("EXTRA TIPS:\n");
+            printf("- Use protective covers for sensitive crops\n");
+            printf("- Monitor weather regularly\n\n");
+
+            printf("REFERENCE:\n");
+            printf("DA CSA Guide | PAGASA | FAO Rainfed Systems\n");
+            break;
+
+        case 9:
+            printf("\n------------------------------------------------------------\n");
+            printf(" POST-HARVEST HANDLING\n");
+            printf("------------------------------------------------------------\n");
+
+            printf("DESCRIPTION:\n");
+            printf("Proper handling prevents losses and maintains crop quality.\n\n");
+
+            printf("PRACTICES:\n");
+            printf("- Dry grains properly to prevent mold\n");
+            printf("- Store in dry, ventilated areas\n");
+            printf("- Handle vegetables carefully to avoid damage\n\n");
+
+            printf("EXTRA TIPS:\n");
+            printf("- Use proper storage containers\n");
+            printf("- Keep storage pest-free\n\n");
+
+            printf("REFERENCE:\n");
+            printf("PHilMech | FAO Postharvest | DA Guide\n");
+            break;
+
+        case 10:
+            printf("\n------------------------------------------------------------\n");
+            printf(" SMALL FARM PLANNING\n");
+            printf("------------------------------------------------------------\n");
+
+            printf("DESCRIPTION:\n");
+            printf("Planning helps maximize income and reduce farming risks.\n\n");
+
+            printf("PRACTICES:\n");
+            printf("- Diversify crops (corn, vegetables, coffee)\n");
+            printf("- Stagger planting schedule\n");
+            printf("- Focus on high-value crops\n\n");
+
+            printf("EXTRA TIPS:\n");
+            printf("- Track expenses and income\n");
+            printf("- Follow seasonal planting patterns\n\n");
+
+            printf("REFERENCE:\n");
+            printf("DA FBS | ATI | FAO Farm Management\n");
+            break;
+
 
             case 11:
                 loop = 0;
@@ -374,19 +513,23 @@ void userManual() {
     do {
         system("cls");
 
-        printf("========== USER MANUAL ==========\n\n");
+        printf("------------------------------------------------------------\n");
+        printf("                    USER MANUAL\n");
+        printf("------------------------------------------------------------\n\n");
 
-        printf("1. STARTING THE SYSTEM\n");
-        printf("2. REGISTRATION\n");
-        printf("3. LOGIN\n");
-        printf("4. MAIN MENU OPTIONS\n");
-        printf("5. EXIT SYSTEM\n");
-        printf("6. Back\n\n");
+        printf(" [1] Getting Started (Start & Exit)\n");
+        printf(" [2] Account Access (Register & Login)\n");
+        printf(" [3] Crop Cultivation Guide\n");
+        printf(" [4] Inventory System\n");
+        printf(" [5] Crop Monitoring System\n");
+        printf(" [6] Back\n\n");
 
-        printf("---------- IMPORTANT NOTES ----------\n");
-        printf("- Enter numbers only\n");
-        printf("- Follow menu instructions carefully\n");
-        printf("-------------------------------------\n");
+        printf("------------------------------------------------------------\n");
+        printf(" IMPORTANT NOTES:\n");
+        printf(" - Enter numbers only when selecting options\n");
+        printf(" - Follow on-screen instructions carefully\n");
+        printf(" - Avoid leaving inputs blank\n");
+        printf("------------------------------------------------------------\n");
 
         printf("\nEnter choice: ");
         scanf("%d", &choice);
@@ -395,57 +538,110 @@ void userManual() {
 
         switch(choice) {
 
-            case 1:
-                printf("STARTING THE SYSTEM\n\n");
-                printf("- Run the program\n");
-                printf("- Landing page menu will appear\n");
-                break;
+        case 1:
+            printf("------------------------------------------------------------\n");
+            printf(" GETTING STARTED (START & EXIT)\n");
+            printf("------------------------------------------------------------\n\n");
 
-            case 2:
-                printf("REGISTRATION\n\n");
-                printf("- Press 1\n");
-                printf("- Enter required user information\n");
-                printf("- Go back to login after registration\n");
-                break;
+            printf("STARTING THE SYSTEM:\n");
+            printf("- Run the program\n");
+            printf("- Wait for the main menu to appear\n");
+            printf("- Choose Register or Login\n\n");
 
-            case 3:
-                printf("LOGIN\n\n");
-                printf("- Press 2\n");
-                printf("- Enter username and password\n");
-                printf("- If correct, you will enter the main menu\n");
-                break;
+            printf("EXITING THE SYSTEM:\n");
+            printf("- Select Exit from any menu\n");
+            printf("- Program will close automatically\n\n");
 
-            case 4:
-                printf("MAIN MENU OPTIONS\n\n");
+            printf("NOTES:\n");
+            printf("- Restart if system becomes unresponsive\n");
+            printf("- Exit properly to avoid data issues\n");
+            break;
 
-                printf("Option 1: Crop Cultivation Guide\n");
-                printf("- Opens farming guide system\n\n");
+        case 2:
+            printf("------------------------------------------------------------\n");
+            printf(" ACCOUNT ACCESS (REGISTER & LOGIN)\n");
+            printf("------------------------------------------------------------\n\n");
 
-                printf("Option 2: Inventory\n");
-                printf("- TBA\n\n");
+            printf("REGISTRATION:\n");
+            printf("- Select Register\n");
+            printf("- Enter username and password\n");
+            printf("- Confirm details\n\n");
 
-                printf("Option 3: Crop Growth Monitoring\n");
-                printf("- TBA\n\n");
+            printf("LOGIN:\n");
+            printf("- Enter username\n");
+            printf("- Enter password\n");
+            printf("- Access system if correct\n\n");
 
-                printf("Option 4: Sign Out\n");
-                printf("- Logs out user\n\n");
+            printf("TIPS:\n");
+            printf("- Use a unique username\n");
+            printf("- Remember your credentials\n");
+            printf("- Check input if login fails\n");
+            break;
 
-                printf("Option 5: Exit\n");
-                printf("- Closes system\n");
-                break;
+        case 3:
+            printf("------------------------------------------------------------\n");
+            printf(" CROP CULTIVATION GUIDE\n");
+            printf("------------------------------------------------------------\n\n");
 
-            case 5:
-                printf("EXIT SYSTEM\n\n");
-                printf("- Closes the program\n");
-                break;
+            printf("DESCRIPTION:\n");
+            printf("- Contains 50+ crops grown in Lantapan\n\n");
 
-            case 6:
-                return;
+            printf("FEATURES:\n");
+            printf("- View crop descriptions and types\n");
+            printf("- Learn planting and harvesting periods\n");
+            printf("- Access farming tips and techniques\n\n");
 
-            default:
-                printf("Invalid input.\n");
+            printf("PURPOSE:\n");
+            printf("- Provide farming knowledge\n");
+            printf("- Improve crop production\n");
+            break;
+
+        case 4:
+            printf("------------------------------------------------------------\n");
+            printf(" INVENTORY SYSTEM\n");
+            printf("------------------------------------------------------------\n\n");
+
+            printf("DESCRIPTION:\n");
+            printf("- Manages stored crops and farm records\n\n");
+
+            printf("FEATURES:\n");
+            printf("- Display all crops in inventory\n");
+            printf("- Add new crop records\n");
+            printf("- Track stored crop data\n\n");
+
+            printf("PURPOSE:\n");
+            printf("- Organize crop information\n");
+            printf("- Track farm resources\n");
+            printf("- Support decision-making\n");
+            break;
+
+        case 5:
+            printf("------------------------------------------------------------\n");
+            printf(" CROP MONITORING SYSTEM\n");
+            printf("------------------------------------------------------------\n\n");
+
+            printf("DESCRIPTION:\n");
+            printf("- Tracks farm production and crop status\n\n");
+
+            printf("FEATURES:\n");
+            printf("- Record land area in hectares\n");
+            printf("- Specify crop type\n");
+            printf("- Input date planted\n\n");
+
+            printf("PURPOSE:\n");
+            printf("- Monitor crop growth\n");
+            printf("- Plan harvest schedules\n");
+            printf("- Improve farm management\n");
+            break;
+
+        case 6:
+            return;
+
+        default:
+            printf("Invalid input. Please enter a valid number.\n");
         }
 
+        printf("\n------------------------------------------------------------\n");
         system("pause");
 
     } while(choice != 6);
@@ -508,7 +704,7 @@ void grainsmenu(){
         printf("\nRICE\n");
         printf("   [5] NSIC Rc 222 (Tubigan 18)\n");
         printf("   [6] PSB Rc 82 (Dorado)\n");
-        printf("   [7] Native Red / Black Rice (Heirloom)\n");
+        printf("   [7] Native Red / Black Rice (Heirloom)\n\n");
         printf("[8] BACK\n");
 
         printf("\nEnter choice: ");
