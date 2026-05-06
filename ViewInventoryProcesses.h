@@ -5,7 +5,7 @@ struct Crop {
     int ID;
     char name[30];
     float quantity;
-    int storageMode; // 1 = Room Temp, 2 = Refrigerated
+    int storageMode;
     int h_year, h_month, h_day;
     int s_year, s_month, s_day;
 };
@@ -28,5 +28,6 @@ void addCrop(char currentUser[]);
 void displayProductList(char currentUser[]);
 void updateCrop(char currentUser[]);
 void deleteCrop(char currentUser[]);
+
 
 #endif // VIEWINVENTORYTHINGS

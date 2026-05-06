@@ -112,7 +112,6 @@ void addCropToField(char currentUser[]) {
     }
 }
 
-// 2. DISPLAY GRID
 void displayFieldGrid(char currentUser[]) {
     char fileName[100];
     sprintf(fileName, "Database/%s_monitoring.txt", currentUser);
@@ -188,8 +187,43 @@ void updateFieldCrop(char currentUser[]) {
     }
     int idx = target - 1;
 
-    printf("New Planting Date (YYYY MM DD): ");
-    scanf("%d %d %d", &field[idx].h_year, &field[idx].h_month, &field[idx].h_day);
+    time_t t = time(NULL);
+    struct tm tm = *localtime(&t);
+    while(1){
+        printf("\nNew Planting Date (YYYY MM DD): ");
+        if (scanf("%d %d %d", &field[idx].h_year, &field[idx].h_month, &field[idx].h_day) != 3) {
+            printf("[ERROR] Invalid format! Please use numbers only (e.g., 2026 05 01).\n");
+            while(getchar() != '\n');
+            continue;
+        }
+
+        if (field[idx].h_year < 2000 || field[idx].h_year > 2100) {
+            printf("[ERROR] Year out of range. Please enter a year between 2000 and 2100.");
+        }
+        else if (field[idx].h_month < 1 || field[idx].h_month > 12) {
+            printf("[ERROR] Invalid month! Must be between 01 and 12.");
+        }
+        else {
+            //Logic Check for Days (Account for Leap Years)
+            int daysInMonth = 31;
+            if (field[idx].h_month == 4 ||field[idx].h_month == 6 || field[idx].h_month == 9 || field[idx].h_month == 11) {
+                daysInMonth = 30;
+            } else if (field[idx].h_month == 2) {
+                // Leap year logic: divisible by 4 but not 100, unless divisible by 400
+                if ((field[idx].h_year % 4 == 0 && field[idx].h_year % 100 != 0) || (field[idx].h_year % 400 == 0))
+                    daysInMonth = 29;
+                else
+                    daysInMonth = 28;
+            }
+
+            if (field[idx].h_day < 1 || field[idx].h_day > daysInMonth) {
+                printf("[ERROR] Day %d does not exist in Month %d of %d.", field[idx].h_day, field[idx].h_month, field[idx].h_year);
+            }
+            else{
+                break;
+            }
+        }
+    }
 
     // Recalculate Harvest Date
     for(int i=0; i<totalTemplates; i++) {

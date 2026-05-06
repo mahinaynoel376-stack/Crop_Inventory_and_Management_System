@@ -129,136 +129,7 @@ int isGrain(char name[]) {
     if (strstr(name, "Rice") || strstr(name, "Corn") || strstr(name, "Munggo")) return 1;
     return 0;
 }
-/*
-void addCrop(char currentUser[]) {
-    struct Crop n;
-    int choice, mode;
-    loadData(currentUser);
 
-    if (inventoryCount == 0) n.ID = 1001;
-    else n.ID = inventory[inventoryCount - 1].ID + 1;
-
-    printf("\n-------------------------- Select Crop --------------------------");
-    printf("\n\n          ##Grains##          \n\n");
-    for (int i = 0; i < totalTemplates; i++){
-            printf("%2d. %-25s %s", i+1, predefinedCrops[i].name, (i+1)%3==0 ? "\n":"");
-                if (i == 6){
-                    printf("\n\n          ##Vegetables##          \n\n");
-                }
-    }
-    printf("\n-----------------------------------------------------------------\n");
-
-    while(1){
-        printf("\nChoice (1-18): ");
-        scanf("%d", &choice);
-        if (choice >= 1 && choice <= 18){
-            break;
-        }
-        else{
-            printf("\n[Error]: Invalid Choice, please pick from 1 to 18.\n");
-        }
-    }
-    int idx = choice - 1;
-    strcpy(n.name, predefinedCrops[idx].name);
-    int validchoice = 0;
-
-    printf("\n[STORAGE SELECTION]\n");
-    printf("1.) Room Temperature (Standard Shelf Life)\n");
-    printf("2.) Refrigerated     (Extended Shelf Life)\n");
-    do{
-        printf("Enter Choice: ");
-        scanf("%d", &mode);
-        if (mode == 1 || mode == 2){
-            validchoice = 1;
-        }
-        else{
-            printf("[Error]: Invalid Choice, please pick 1 or 2.\n\n");
-        }
-    } while (validchoice == 0);
-    n.storageMode = mode;
-
-    int shelfLife = (mode == 2) ? predefinedCrops[idx].shelfLifeRef : predefinedCrops[idx].shelfLifeRoom;
-    while(1){
-        printf("\nQuantity (kg): ");
-        scanf("%f", &n.quantity);
-        if (n.quantity < 0) printf("[Error]: Invalid Quantity\n");
-        else{
-            break;
-        }
-    }
-    int harvestdatechoice;
-    time_t t = time(NULL);
-    struct tm tm = *localtime(&t);
-    while(1){
-        printf("\nSet Harvest Date as:\n1. Today's Date (Automated)\n2. Enter Date Manually\nChoice: ");
-        scanf("%d", &harvestdatechoice);
-
-        switch(harvestdatechoice){
-            case 1:
-                n.h_year = tm.tm_year + 1900;
-                n.h_month = tm.tm_mon + 1;
-                n.h_day = tm.tm_mday;
-                break;
-            case 2:
-                while(1){
-                    printf("\nHarvest Date (YYYY MM DD): ");
-                    if (scanf("%d %d %d", &n.h_year, &n.h_month, &n.h_day) != 3) {
-                        printf("[ERROR] Invalid format! Please use numbers only (e.g., 2026 05 01).\n");
-                        while(getchar() != '\n'); // Clear the "trash" from the input buffer
-                        continue;
-                    }
-
-                    if (n.h_year < 2000 || n.h_year > 2100) {
-                        printf("[ERROR] Year out of range. Please enter a year between 2000 and 2100.");
-                    }
-                    else if (n.h_month < 1 || n.h_month > 12) {
-                        printf("[ERROR] Invalid month! Must be between 01 and 12.");
-                    }
-                    else {
-                        //Logic Check for Days (Account for Leap Years)
-                        int daysInMonth = 31;
-                        if (n.h_month == 4 || n.h_month == 6 || n.h_month == 9 || n.h_month == 11) {
-                            daysInMonth = 30;
-                        } else if (n.h_month == 2) {
-                            // Leap year logic: divisible by 4 but not 100, unless divisible by 400
-                            if ((n.h_year % 4 == 0 && n.h_year % 100 != 0) || (n.h_year % 400 == 0))
-                                daysInMonth = 29;
-                            else
-                                daysInMonth = 28;
-                        }
-
-                        if (n.h_day < 1 || n.h_day > daysInMonth) {
-                            printf("[ERROR] Day %d does not exist in Month %d of %d.", n.h_day, n.h_month, n.h_year);
-                        }
-                        else{
-                            break;
-                        }
-                    }
-                }
-                break;
-            default:
-                printf("[Error]: Invalid Choice, Please choose 1 or 2.\n");
-        }
-        if (harvestdatechoice == 1 || harvestdatechoice == 2){
-            break;
-        }
-    }
-    calculateExpiry(&n, shelfLife);
-
-    char fileName[100];
-    sprintf(fileName, "Database/%s_crop_database.txt", currentUser);
-
-    FILE *f = fopen(fileName, "a");
-    if (f) {
-        // Fixed: Saving with %f for quantity
-        fprintf(f, "%d,%s,%.2f,%d,%04d/%02d/%02d,%04d/%02d/%02d\n",
-                n.ID, n.name, n.quantity, n.storageMode, n.h_year, n.h_month, n.h_day, n.s_year, n.s_month, n.s_day);
-        fclose(f);
-        system("cls");
-        printf("\n[SUCCESS] %s added. ID: %d. Expires: %02d/%02d/%d\n", n.name, n.ID, n.s_month, n.s_day, n.s_year);
-    }
-}
-*/
 void addCrop(char currentUser[]) {
     struct Crop n;
     int choice, mode;
@@ -319,7 +190,7 @@ void addCrop(char currentUser[]) {
                     printf("\nHarvest Date (YYYY MM DD): ");
                     if (scanf("%d %d %d", &n.h_year, &n.h_month, &n.h_day) != 3) {
                         printf("[ERROR] Invalid format! Please use numbers only (e.g., 2026 05 01).\n");
-                        while(getchar() != '\n'); // Clear the "trash" from the input buffer
+                        while(getchar() != '\n');
                         continue;
                     }
 
@@ -368,6 +239,7 @@ void addCrop(char currentUser[]) {
         fprintf(f, "%d,%s,%.2f,%d,%04d/%02d/%02d,%04d/%02d/%02d\n",
                 n.ID, n.name, n.quantity, n.storageMode, n.h_year, n.h_month, n.h_day, n.s_year, n.s_month, n.s_day);
         fclose(f);
+        system("cls");
         printf("\n[SUCCESS] %s added. ID: %d\n", n.name, n.ID);
     }
 }
@@ -415,12 +287,50 @@ void updateCrop(char currentUser[]) {
                     scanf("%d", &inventory[i].storageMode);
                     break;
                 case 3:
-                    printf("Current Harvest: %04d/%02d/%02d. New Date (YYYY MM DD): ",
+                    time_t t = time(NULL);
+                    struct tm tm = *localtime(&t);
+                       while(1){
+                            printf("\nCurrent Harvest: %04d/%02d/%02d. New Date (YYYY MM DD): ",
                            inventory[i].h_year, inventory[i].h_month, inventory[i].h_day);
-                    scanf("%d %d %d", &inventory[i].h_year, &inventory[i].h_month, &inventory[i].h_day);
+                            if (scanf("%d %d %d", &inventory[i].h_year, &inventory[i].h_month, &inventory[i].h_day) != 3) {
+                                printf("[ERROR] Invalid format! Please use numbers only (e.g., 2026 05 01).\n");
+                                while(getchar() != '\n');
+                                continue;
+                            }
+
+                            if (inventory[i].h_year < 2000 || inventory[i].h_year > 2100) {
+                                printf("[ERROR] Year out of range. Please enter a year between 2000 and 2100.");
+                            }
+                            else if (inventory[i].h_month < 1 || inventory[i].h_month > 12) {
+                                printf("[ERROR] Invalid month! Must be between 01 and 12.");
+                            }
+                            else {
+                                //Logic Check for Days (Account for Leap Years)
+                                int daysInMonth = 31;
+                                if (inventory[i].h_month == 4 ||inventory[i].h_month == 6 || inventory[i].h_month == 9 || inventory[i].h_month == 11) {
+                                    daysInMonth = 30;
+                                } else if (inventory[i].h_month == 2) {
+                                    // Leap year logic: divisible by 4 but not 100, unless divisible by 400
+                                    if ((inventory[i].h_year % 4 == 0 && inventory[i].h_year % 100 != 0) || (inventory[i].h_year % 400 == 0))
+                                        daysInMonth = 29;
+                                    else
+                                        daysInMonth = 28;
+                                }
+
+                                if (inventory[i].h_day < 1 || inventory[i].h_day > daysInMonth) {
+                                    printf("[ERROR] Day %d does not exist in Month %d of %d.\n", inventory[i].h_day, inventory[i].h_month,inventory[i].h_year);
+                                }
+                                else{
+                                    break;
+                                }
+                            }
+                    }
+                    break;
+                case 4:
+                    printf("Update cancelled.\n");
                     break;
                 default:
-                    printf("Update cancelled.\n");
+                    printf("Invalid Input: Update cancelled.\n");
                     return;
             }
 
@@ -450,6 +360,7 @@ void updateCrop(char currentUser[]) {
         system("cls");
         printf("\n[SUCCESS] Inventory has been updated!\n");
     } else {
+        system("cls");
         printf("\n[ERROR] Crop ID not found.\n");
     }
 }
